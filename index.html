@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor | Portfolio</title>
+    
+    <!-- Load Tailwind CSS framework for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Inter font from Google Fonts for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles and variables */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Very dark gray/black background */
+            color: #f5f5f5; /* Off-white text for readability */
+            overflow-x: hidden;
+        }
+
+        /* 
+         * SCROLL ANIMATIONS 
+         * Elements with the 'reveal' class will start hidden and slightly lower.
+         * When they scroll into view, JavaScript will add the 'active' class to animate them up.
+         */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* LOAD ANIMATIONS (For the Hero section when page first opens) */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-up {
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0; /* Ensures it stays hidden before animation starts */
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+        /* YOUTUBE VIDEO CONTAINER TRICK
+         * This forces YouTube iframes to maintain a perfect 16:9 aspect ratio 
+         * and scale perfectly on mobile and desktop.
+         */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: #1a1a1a; /* Placeholder color before video loads */
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <!-- Fixed to top, uses glassmorphism (blur) effect -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300" id="navbar">
+        <a href="#home" class="text-xl font-bold tracking-tighter">YourName.</a>
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 space-x-8 text-sm font-medium">
+            <a href="#home" class="hover:text-purple-400 transition-colors">Home</a>
+            <a href="#work" class="hover:text-purple-400 transition-colors">Work</a>
+            <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+        </div>
+        
+        <a href="#contact" class="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform">
+            Let's Talk
+        </a>
+
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-neutral-950/95 backdrop-blur-xl z-40 hidden flex-col justify-center items-center space-y-8 text-2xl font-semibold opacity-0 transition-opacity duration-300">
+        <a href="#home" class="hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Home</a>
+        <a href="#work" class="hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Work</a>
+        <a href="#about" class="hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">About</a>
+        <a href="#contact" class="text-purple-400" onclick="toggleMobileMenu()">Let's Talk</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
+        <!-- Subtle background glow effect -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center z-10">
+            <!-- Dynamic, eye-catching headline -->
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 animate-fade-up">
+                Crafting Visual <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Stories.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-neutral-400 mb-10 max-w-2xl mx-auto animate-fade-up delay-100 font-light">
+                I'm a freelance Video Editor dedicated to creating dynamic, engaging, and high-retention content for YouTube, brands, and creators.
+            </p>
+            
+            <div class="animate-fade-up delay-300">
+                <a href="#work" class="inline-flex items-center gap-2 bg-white text-black font-semibold px-8 py-4 rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                    View My Edits
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK / PORTFOLIO SECTION -->
+    <section id="work" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Selected Works</h2>
+                <p class="text-neutral-400 text-lg">A curated collection of my best video edits.</p>
+            </div>
+        </div>
+
+        <!-- VIDEO GRID -->
+        <!-- Changes from 1 column on mobile to 2 on desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            
+            <!-- VIDEO ITEM 1 -->
+            <div class="reveal group">
+                <!-- Outer rounded container for the video -->
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <!-- YouTube 16:9 Wrapper -->
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/npQ2IORdlvU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <!-- Video Title & Description -->
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Creative Edit Project</h3>
+                <p class="text-neutral-400">Editing • Pacing • Visual Storytelling</p>
+            </div>
+
+            <!-- VIDEO ITEM 2 -->
+            <div class="reveal group md:mt-16"> <!-- Added margin-top to stagger the grid visually -->
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/LyAoEo4NnDc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 1</h3>
+                <p class="text-neutral-400">Vertical Video • High-Retention • Subtitles</p>
+            </div>
+
+            <!-- VIDEO ITEM 3 -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/tC8Dby2sbLU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 2</h3>
+                <p class="text-neutral-400">TikTok/Reels • Pacing • Visual Storytelling</p>
+            </div>
+
+             <!-- VIDEO ITEM 4 -->
+            <div class="reveal group md:mt-16">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/tPEE9ZwTmy0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Podcast Highlights</h3>
+                <p class="text-neutral-400">Multi-cam Sync • Short-form Optimization</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-32 px-6 bg-neutral-900/30 border-y border-white/5 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 tracking-tight">The Editor Behind the Screen</h2>
+            <p class="text-lg md:text-xl text-neutral-300 leading-relaxed mb-12 font-light">
+                With a deep understanding of audience retention and pacing, I help creators and brands elevate their storytelling. Whether it's aggressive jump-cuts for modern social media algorithms or smooth, cinematic narratives, I adapt to the style your project demands.
+            </p>
+            
+            <!-- Software / Skills Pills -->
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4 text-sm font-medium">
+                <span class="px-5 py-2.5 bg-neutral-800/80 border border-white/10 rounded-full text-neutral-200">Premiere Pro</span>
+                <span class="px-5 py-2.5 bg-neutral-800/80 border border-white/10 rounded-full text-neutral-200">After Effects</span>
+                <span class="px-5 py-2.5 bg-neutral-800/80 border border-white/10 rounded-full text-neutral-200">DaVinci Resolve</span>
+                <span class="px-5 py-2.5 bg-neutral-800/80 border border-white/10 rounded-full text-neutral-200">Sound Design</span>
+                <span class="px-5 py-2.5 bg-neutral-800/80 border border-white/10 rounded-full text-neutral-200">Color Grading</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-32 px-6 max-w-4xl mx-auto text-center reveal">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Let's work together.</h2>
+        <p class="text-neutral-400 mb-12 text-lg md:text-xl font-light">Currently accepting new freelance projects. If you're looking for an editor to take your content to the next level, drop me a line.</p>
+        
+        <!-- Email Button -->
+        <a href="mailto:your.email@example.com" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-10 py-5 rounded-full hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:scale-105 transition-all duration-300 text-lg">
+            hello@yourdomain.com
+        </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 py-8 px-6 text-center text-neutral-500 text-sm">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            
+            <!-- Social Links (Optional) -->
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">YouTube</a>
+                <a href="#" class="hover:text-white transition-colors">Twitter / X</a>
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. MOBILE MENU TOGGLE LOGIC
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMobileMenu() {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating opacity
+                setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            } else {
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }, 300);
+            }
+        }
+
+        // 2. NAVBAR BLUR ON SCROLL LOGIC
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+            } else {
+                navbar.classList.remove('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+            }
+        });
+
+        // 3. SCROLL REVEAL ANIMATION LOGIC (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15, // Triggers when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it reaches the bottom
+            };
+            
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, revealOptions);
+            
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>
