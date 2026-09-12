@@ -17,16 +17,12 @@
         /* Base styles and variables */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a; /* Very dark gray/black background */
-            color: #f5f5f5; /* Off-white text for readability */
+            background-color: #0a0a0a;
+            color: #f5f5f5;
             overflow-x: hidden;
         }
 
-        /* 
-         * SCROLL ANIMATIONS 
-         * Elements with the 'reveal' class will start hidden and slightly lower.
-         * When they scroll into view, JavaScript will add the 'active' class to animate them up.
-         */
+        /* SCROLL ANIMATIONS */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -38,7 +34,7 @@
             transform: translateY(0);
         }
 
-        /* LOAD ANIMATIONS (For the Hero section when page first opens) */
+        /* LOAD ANIMATIONS */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -46,23 +42,20 @@
         
         .animate-fade-up {
             animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0; /* Ensures it stays hidden before animation starts */
+            opacity: 0;
         }
         
         .delay-100 { animation-delay: 0.1s; }
         .delay-300 { animation-delay: 0.3s; }
         .delay-500 { animation-delay: 0.5s; }
 
-        /* YOUTUBE VIDEO CONTAINER TRICK
-         * This forces YouTube iframes to maintain a perfect 16:9 aspect ratio 
-         * and scale perfectly on mobile and desktop.
-         */
+        /* YOUTUBE VIDEO CONTAINER */
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            background-color: #1a1a1a; /* Placeholder color before video loads */
+            background-color: #1a1a1a;
         }
         
         .video-wrapper iframe {
@@ -74,19 +67,23 @@
             border: 0;
         }
         
-        /* Custom scrollbar for a premium feel */
+        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
     </style>
 </head>
+
 <body class="antialiased selection:bg-purple-500 selection:text-white">
 
     <!-- NAVIGATION BAR -->
-    <!-- Fixed to top, uses glassmorphism (blur) effect -->
     <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300" id="navbar">
-        <a href="#home" class="text-xl font-bold tracking-tighter">YourName.</a>
+        
+        <!-- BAD J CREATIVES LOGO -->
+        <a href="#home" class="flex items-center">
+            <img src="./bad-j-logo-white.png" alt="Bad J Creatives" class="w-20 h-12 object-contain">
+        </a>
         
         <!-- Desktop Menu -->
         <div class="hidden md:flex bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 space-x-8 text-sm font-medium">
@@ -95,11 +92,11 @@
             <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
         </div>
         
-        <a href="#contact" class="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform">
-            Let's Talk
+        <a href="#href="tel:+251947724459"" class="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform">
+            Contact Me
         </a>
 
-        <!-- Mobile Menu Button (Hamburger) -->
+        <!-- Mobile Menu Button -->
         <button class="md:hidden text-white focus:outline-none" onclick="toggleMobileMenu()">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -107,7 +104,7 @@
         </button>
     </nav>
 
-    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-neutral-950/95 backdrop-blur-xl z-40 hidden flex-col justify-center items-center space-y-8 text-2xl font-semibold opacity-0 transition-opacity duration-300">
         <a href="#home" class="hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Home</a>
         <a href="#work" class="hover:text-purple-400 transition-colors" onclick="toggleMobileMenu()">Work</a>
@@ -117,11 +114,13 @@
 
     <!-- HERO SECTION -->
     <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
+        
         <!-- Subtle background glow effect -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto text-center z-10">
-            <!-- Dynamic, eye-catching headline -->
+            
+            <!-- Headline -->
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 animate-fade-up">
                 Crafting Visual <br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Stories.</span>
@@ -134,7 +133,9 @@
             <div class="animate-fade-up delay-300">
                 <a href="#work" class="inline-flex items-center gap-2 bg-white text-black font-semibold px-8 py-4 rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                     View My Edits
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
                 </a>
             </div>
         </div>
@@ -142,6 +143,7 @@
 
     <!-- WORK / PORTFOLIO SECTION -->
     <section id="work" class="py-32 px-6 max-w-7xl mx-auto">
+        
         <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
             <div>
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Selected Works</h2>
@@ -150,54 +152,94 @@
         </div>
 
         <!-- VIDEO GRID -->
-        <!-- Changes from 1 column on mobile to 2 on desktop -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-            
-            <!-- VIDEO ITEM 1 -->
+
+            <!-- VIDEO 1 -->
             <div class="reveal group">
-                <!-- Outer rounded container for the video -->
                 <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
-                    <!-- YouTube 16:9 Wrapper -->
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/npQ2IORdlvU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/npQ2IORdlvU" title="Creative Edit Project" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
-                <!-- Video Title & Description -->
                 <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Creative Edit Project</h3>
                 <p class="text-neutral-400">Editing • Pacing • Visual Storytelling</p>
             </div>
 
-            <!-- VIDEO ITEM 2 -->
-            <div class="reveal group md:mt-16"> <!-- Added margin-top to stagger the grid visually -->
+            <!-- VIDEO 2 -->
+            <div class="reveal group">
                 <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/LyAoEo4NnDc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/LyAoEo4NnDc" title="Short-Form Edit 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
                 <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 1</h3>
                 <p class="text-neutral-400">Vertical Video • High-Retention • Subtitles</p>
             </div>
 
-            <!-- VIDEO ITEM 3 -->
+            <!-- VIDEO 3 -->
             <div class="reveal group">
                 <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/tC8Dby2sbLU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/tC8Dby2sbLU" title="Short-Form Edit 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
                 <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 2</h3>
                 <p class="text-neutral-400">TikTok/Reels • Pacing • Visual Storytelling</p>
             </div>
 
-             <!-- VIDEO ITEM 4 -->
-            <div class="reveal group md:mt-16">
+            <!-- VIDEO 4 -->
+            <div class="reveal group">
                 <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/tPEE9ZwTmy0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/qQegUI5Ozx0" title="Podcast Highlights" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
                 <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Podcast Highlights</h3>
                 <p class="text-neutral-400">Multi-cam Sync • Short-form Optimization</p>
+            </div>
+
+            <!-- VIDEO 5 -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/wYkTCmQNATY" title="Creative Edit" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Creative Edit</h3>
+                <p class="text-neutral-400">Short-Form Video • Visual Storytelling</p>
+            </div>
+
+            <!-- VIDEO 6 -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/A8MQl9tNhfo" title="Short-Form Edit 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 3</h3>
+                <p class="text-neutral-400">Social Media • Fast-Paced Editing</p>
+            </div>
+
+            <!-- VIDEO 7 -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/_ZO_6tYqayI" title="Short-Form Edit 4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 4</h3>
+                <p class="text-neutral-400">Social Media • Visual Storytelling</p>
+            </div>
+
+            <!-- VIDEO 8 -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/FMRAprjgOSw" title="Documentary Style Editing" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Documentary Style Editing</h3>
+                <p class="text-neutral-400">Storytelling • Cinematic Editing • Pacing</p>
             </div>
 
         </div>
@@ -207,6 +249,7 @@
     <section id="about" class="py-32 px-6 bg-neutral-900/30 border-y border-white/5 relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="text-3xl md:text-5xl font-bold mb-8 tracking-tight">The Editor Behind the Screen</h2>
+            
             <p class="text-lg md:text-xl text-neutral-300 leading-relaxed mb-12 font-light">
                 With a deep understanding of audience retention and pacing, I help creators and brands elevate their storytelling. Whether it's aggressive jump-cuts for modern social media algorithms or smooth, cinematic narratives, I adapt to the style your project demands.
             </p>
@@ -225,20 +268,29 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="py-32 px-6 max-w-4xl mx-auto text-center reveal">
         <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Let's work together.</h2>
-        <p class="text-neutral-400 mb-12 text-lg md:text-xl font-light">Currently accepting new freelance projects. If you're looking for an editor to take your content to the next level, drop me a line.</p>
+        
+        <p class="text-neutral-400 mb-12 text-lg md:text-xl font-light">
+            Currently accepting new freelance projects. If you're looking for an editor to take your content to the next level, drop me a line.
+        </p>
         
         <!-- Email Button -->
-        <a href="mailto:your.email@example.com" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-10 py-5 rounded-full hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:scale-105 transition-all duration-300 text-lg">
-            hello@yourdomain.com
+        <a href="mailto:asefabesufikad1@gmail.com" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-10 py-5 rounded-full hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:scale-105 transition-all duration-300 text-lg">
+            asefabesufikad1@gmail.com
         </a>
+
+        <div class="mt-6 flex flex-col gap-3 text-lg">
+            <a href="tel:+251947724459">📞 +251 947 724 459</a>
+            <a href="tel:+251900311796">📞 +251 900 311 796</a>
+        </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="border-t border-white/10 py-8 px-6 text-center text-neutral-500 text-sm">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
             
-            <!-- Social Links (Optional) -->
+            <p>&copy; 2024 . All rights reserved.</p>
+            
+            <!-- Social Links -->
             <div class="flex gap-6">
                 <a href="#" class="hover:text-white transition-colors">YouTube</a>
                 <a href="#" class="hover:text-white transition-colors">Twitter / X</a>
@@ -251,52 +303,70 @@
     <script>
         // 1. MOBILE MENU TOGGLE LOGIC
         const mobileMenu = document.getElementById('mobile-menu');
+
         function toggleMobileMenu() {
             if (mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.remove('hidden');
-                // Small delay to allow display:block to apply before animating opacity
+
                 setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+
+                document.body.style.overflow = 'hidden';
             } else {
                 mobileMenu.classList.add('opacity-0');
+
                 setTimeout(() => {
                     mobileMenu.classList.add('hidden');
-                    document.body.style.overflow = 'auto'; // Restore scrolling
+                    document.body.style.overflow = 'auto';
                 }, 300);
             }
         }
 
         // 2. NAVBAR BLUR ON SCROLL LOGIC
         const navbar = document.getElementById('navbar');
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+                navbar.classList.add(
+                    'bg-neutral-950/80',
+                    'backdrop-blur-md',
+                    'border-b',
+                    'border-white/10'
+                );
             } else {
-                navbar.classList.remove('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-white/10');
+                navbar.classList.remove(
+                    'bg-neutral-950/80',
+                    'backdrop-blur-md',
+                    'border-b',
+                    'border-white/10'
+                );
             }
         });
 
-        // 3. SCROLL REVEAL ANIMATION LOGIC (Intersection Observer)
+        // 3. SCROLL REVEAL ANIMATION LOGIC
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
-            
+
             const revealOptions = {
-                threshold: 0.15, // Triggers when 15% of the element is visible
-                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it reaches the bottom
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
             };
-            
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, revealOptions);
-            
+
+            const revealOnScroll = new IntersectionObserver(
+                function(entries, observer) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        }
+                    });
+                },
+                revealOptions
+            );
+
             reveals.forEach(reveal => {
                 revealOnScroll.observe(reveal);
             });
         });
     </script>
+
 </body>
 </html>
