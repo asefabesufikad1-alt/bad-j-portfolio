@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Editor | Portfolio</title>
-    
+
     <!-- Load Tailwind CSS framework for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Load Inter font from Google Fonts for a modern, clean look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* Base styles and variables */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
@@ -28,7 +27,7 @@
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -39,12 +38,12 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .animate-fade-up {
             animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
-        
+
         .delay-100 { animation-delay: 0.1s; }
         .delay-300 { animation-delay: 0.3s; }
         .delay-500 { animation-delay: 0.5s; }
@@ -57,7 +56,7 @@
             overflow: hidden;
             background-color: #1a1a1a;
         }
-        
+
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -66,7 +65,7 @@
             height: 100%;
             border: 0;
         }
-        
+
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0a0a0a; }
@@ -79,20 +78,20 @@
 
     <!-- NAVIGATION BAR -->
     <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300" id="navbar">
-        
+
         <!-- BAD J CREATIVES LOGO -->
         <a href="#home" class="flex items-center">
             <img src="./bad-j-logo-white.png" alt="Bad J Creatives" class="w-20 h-12 object-contain">
         </a>
-        
+
         <!-- Desktop Menu -->
         <div class="hidden md:flex bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-6 py-2 space-x-8 text-sm font-medium">
             <a href="#home" class="hover:text-purple-400 transition-colors">Home</a>
             <a href="#work" class="hover:text-purple-400 transition-colors">Work</a>
             <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
         </div>
-        
-        <a href="#href="tel:+251947724459"" class="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform">
+
+        <a href="tel:+251947724459" class="hidden md:block bg-white text-black px-5 py-2 rounded-full text-sm font-semibold hover:scale-105 transition-transform">
             Contact Me
         </a>
 
@@ -114,22 +113,22 @@
 
     <!-- HERO SECTION -->
     <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-        
+
         <!-- Subtle background glow effect -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
         <div class="max-w-4xl mx-auto text-center z-10">
-            
+
             <!-- Headline -->
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 animate-fade-up">
                 Crafting Visual <br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Stories.</span>
             </h1>
-            
+
             <p class="text-lg md:text-xl text-neutral-400 mb-10 max-w-2xl mx-auto animate-fade-up delay-100 font-light">
                 I'm a freelance Video Editor dedicated to creating dynamic, engaging, and high-retention content for YouTube, brands, and creators.
             </p>
-            
+
             <div class="animate-fade-up delay-300">
                 <a href="#work" class="inline-flex items-center gap-2 bg-white text-black font-semibold px-8 py-4 rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                     View My Edits
@@ -143,7 +142,7 @@
 
     <!-- WORK / PORTFOLIO SECTION -->
     <section id="work" class="py-32 px-6 max-w-7xl mx-auto">
-        
+
         <div class="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
             <div>
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Selected Works</h2>
@@ -242,6 +241,28 @@
                 <p class="text-neutral-400">Storytelling • Cinematic Editing • Pacing</p>
             </div>
 
+            <!-- VIDEO 9 - NEW -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/D9Ni4YgLYAY" title="Short-Form Edit 5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 5</h3>
+                <p class="text-neutral-400">Social Media • Motion Graphics • Visual Storytelling</p>
+            </div>
+
+            <!-- VIDEO 10 - NEW -->
+            <div class="reveal group">
+                <div class="rounded-2xl overflow-hidden mb-6 border border-white/10 group-hover:border-white/20 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] relative">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/AOP2ebb2x8Q" title="Short-Form Edit 6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold mb-2 group-hover:text-purple-400 transition-colors">Short-Form Edit 6</h3>
+                <p class="text-neutral-400">Social Media • Editing • Pacing</p>
+            </div>
+
         </div>
     </section>
 
@@ -249,11 +270,11 @@
     <section id="about" class="py-32 px-6 bg-neutral-900/30 border-y border-white/5 relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="text-3xl md:text-5xl font-bold mb-8 tracking-tight">The Editor Behind the Screen</h2>
-            
+
             <p class="text-lg md:text-xl text-neutral-300 leading-relaxed mb-12 font-light">
                 With a deep understanding of audience retention and pacing, I help creators and brands elevate their storytelling. Whether it's aggressive jump-cuts for modern social media algorithms or smooth, cinematic narratives, I adapt to the style your project demands.
             </p>
-            
+
             <!-- Software / Skills Pills -->
             <div class="flex flex-wrap justify-center gap-3 md:gap-4 text-sm font-medium">
                 <span class="px-5 py-2.5 bg-neutral-800/80 border border-white/10 rounded-full text-neutral-200">Premiere Pro</span>
@@ -268,14 +289,14 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="py-32 px-6 max-w-4xl mx-auto text-center reveal">
         <h2 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Let's work together.</h2>
-        
+
         <p class="text-neutral-400 mb-12 text-lg md:text-xl font-light">
             Currently accepting new freelance projects. If you're looking for an editor to take your content to the next level, drop me a line.
         </p>
-        
+
         <!-- Email Button -->
         <a href="mailto:asefabesufikad1@gmail.com" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-10 py-5 rounded-full hover:shadow-[0_0_30px_rgba(168,85,247,0.4)] hover:scale-105 transition-all duration-300 text-lg">
-            asefabesufikad1@gmail.com
+            a***@gmail.com
         </a>
 
         <div class="mt-6 flex flex-col gap-3 text-lg">
@@ -287,9 +308,9 @@
     <!-- FOOTER -->
     <footer class="border-t border-white/10 py-8 px-6 text-center text-neutral-500 text-sm">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            
+
             <p>&copy; 2024 . All rights reserved.</p>
-            
+
             <!-- Social Links -->
             <div class="flex gap-6">
                 <a href="#" class="hover:text-white transition-colors">YouTube</a>
